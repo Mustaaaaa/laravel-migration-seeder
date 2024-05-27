@@ -38,21 +38,21 @@
                 <tbody>
                     @foreach ($trains as $train)
                     <tr>
-                        <td>{{ $train->Azienda }}</td>
-                        <td>{{ $train->Stazione_di_partenza }}</td>
-                        <td>{{ $train->Stazione_di_arrivo }}</td>
-                        <td>{{ $train->Data_di_partenza }}</td>
-                        <td>{{ $train->Data_di_arrivo }}</td>
-                        <td>{{ $train->Orario_di_partenza }}</td>
-                        <td>{{ $train->Orario_di_arrivo }}</td>
-                        <td>{{ $train->Codice_Treno }}</td>
-                        <td>{{ $train->Numero_Carrozze }}</td>
+                        <td>{{ $train->azienda }}</td>
+                        <td>{{ $train->stazione_di_partenza }}</td>
+                        <td>{{ $train->stazione_di_arrivo }}</td>
+                        <td>{{ $train->data_di_partenza->format('Y-m-d') }}</td>
+                        <td>{{ $train->data_di_arrivo->format('Y-m-d') }}</td>
+                        <td>{{ $train->data_di_partenza->format('H:i:s') }}</td>
+                        <td>{{ $train->data_di_arrivo->format('H:i:s') }}</td>
+                        <td>{{ $train->codice_treno }}</td>
+                        <td>{{ $train->numero_carrozze }}</td>
                         <td>
-                            @if($train->In_orario)
+                            @if($train->in_orario)
                             In orario
-                            @elseif($train->In_ritardo)
+                            @elseif($train->in_ritardo)
                             In ritardo
-                            @elseif($train->Cancellato)
+                            @elseif($train->cancellato)
                             Cancellato
                             @endif
                         </td>
