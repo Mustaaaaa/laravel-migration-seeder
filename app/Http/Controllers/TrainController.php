@@ -8,11 +8,10 @@ use Illuminate\Http\Request;
 class TrainController extends Controller
 {
     //
-    public function index()
+    public function home()
     {
-
-        $trains = Train::whereDate('Orario_di_partenza', today())->get();
-        dd($trains);
+        $trains = Train::whereDate('Data_di_partenza', today())->get();
+        // dd($trains);
 
         return view('home', compact('trains'));
     }

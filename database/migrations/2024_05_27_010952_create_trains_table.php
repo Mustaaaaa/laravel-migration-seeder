@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('Stazione_di_arrivo', 100);
             $table->timestamp('Data_di_partenza');
             $table->timestamp('Data_di_arrivo');
-            $table->string('Codice_Treno', 10);
+            $table->string('Codice_Treno', 8);
             $table->tinyInteger('Numero_Carrozze');
             $table->boolean('In_orario')->default(true);
             $table->boolean('In_ritardo')->default(true);

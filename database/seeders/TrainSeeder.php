@@ -15,10 +15,11 @@ class TrainSeeder extends Seeder
     public function run(Faker $faker): void
     {
         //
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 10000; $i++) {
             $train = new Train();
             $partenza = $faker->dateTimeBetween('now', '+1 month');
             $arrivo = $faker->dateTimeInInterval($partenza, '+2 days');
+            $randomValue = $faker->randomElement(['In_orario', 'In_ritardo', 'Cancellato']);
 
             $train->Azienda = $faker->company;
             $train->Stazione_di_partenza = $faker->city;
@@ -26,10 +27,10 @@ class TrainSeeder extends Seeder
             $train->Data_di_partenza = $partenza->format('Y-m-d H:i:s');
             $train->Data_di_arrivo = $arrivo->format('Y-m-d H:i:s');
             $train->Codice_Treno = $faker->bothify('??######');
-            $train->Numero_Carrozze = $faker->numberBetween(1, 10);
-            $train->In_orario = $faker->randomElement([true, false]);
-            $train->In_ritardo = $faker->randomElement([true, false]);
-            $train->Cancellato = $faker->randomElement([true, false]);
+            $train->Numero_Carrozze = $faker->numberBetween(6, 20);
+            $train->In_orario = $randomValue === 'In_orario';
+            $train->In_ritardo = $randomValue === 'In_ritardo';
+            $train->Cancellato = $randomValue === 'Cancellato';
 
             $train->save();
         }
